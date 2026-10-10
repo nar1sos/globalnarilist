@@ -38,6 +38,23 @@ function extractYouTubeId(urlOrId) {
     return str;
 }
 
+// Помощник с таймаутом, чтобы fetch не висел вечно
+async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+        const response = await fetch(resource, {
+            ...options,
+            signal: controller.signal
+        });
+        clearTimeout(id);
+        return response;
+    } catch (error) {
+        clearTimeout(id);
+        throw error;
+    }
+}
+
 export default {
     components: { Spinner },
     template: `
@@ -367,72 +384,75 @@ export default {
 
         async loadAllData() {
             this.loading = true;
-            try {
-                // 1. Загрузка списка уровней (_list.json) с cache-buster
-                let loadedList = [];
-                try {
-                    const cacheBuster = `?_t=${Date.now()}`;
-                    let resList = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}${cacheBuster}`, {
-                        headers: { 'Accept': 'application/vnd.github.v3+json' }
-                    });
-                    if (resList.ok) {
-                        const data = await resList.json();
-                        this.fileSha = data.sha;
-                        if (data.content) {
-                            const decodedContent = base64ToUtf8(data.content);
-                            loadedList = JSON.parse(decodedContent);
-                        }
-                    }
-                } catch (err) {
-                    console.warn("GitHub list fetch error, falling back:", err);
-                }
+            let loadedList = [];
 
-                if (!loadedList || loadedList.length === 0) {
+            try {
+                // 1. Пытаемся загрузить _list.json с GitHub с таймаутом в 4 секунды
+                const cacheBuster = `?_t=${Date.now()}`;
+                const resList = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}${cacheBuster}`, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                }, 4000);
+
+                if (resList.ok) {
+                    const data = await resList.json();
+                    this.fileSha = data.sha;
+                    if (data.content) {
+                        const decodedContent = base64ToUtf8(data.content);
+                        loadedList = JSON.parse(decodedContent);
+                    }
+                }
+            } catch (err) {
+                console.warn("GitHub list fetch timeout or error, using fallback:", err);
+            }
+
+            // Если с GitHub не вышло, пробуем взять из ContentModule
+            if (!loadedList || loadedList.length === 0) {
+                try {
                     const fetchListFn = ContentModule.fetchList || (async () => []);
                     loadedList = await fetchListFn();
+                } catch (e) {
+                    console.warn("ContentModule fetch error:", e);
                 }
-
-                if (Array.isArray(loadedList)) {
-                    this.list = loadedList.map((item, index) => {
-                        if (typeof item === 'string') {
-                            return { name: item, author: 'Unknown', rank: index + 1, records: [] };
-                        } else if (typeof item === 'object' && item !== null) {
-                            return { ...item, rank: index + 1, records: item.records || item.victors || [] };
-                        }
-                        return { name: "Unknown", rank: index + 1, records: [] };
-                    });
-                } else {
-                    this.list = [];
-                }
-
-                // 2. Загрузка лидерборда (_leaderboard.json)
-                try {
-                    const cacheBuster = `?_t=${Date.now()}`;
-                    let resPlayers = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}${cacheBuster}`, {
-                        headers: { 'Accept': 'application/vnd.github.v3+json' }
-                    });
-                    if (resPlayers.ok) {
-                        const pData = await resPlayers.json();
-                        if (pData.content) {
-                            const decodedPlayers = base64ToUtf8(pData.content);
-                            this.players = JSON.parse(decodedPlayers);
-                        }
-                    }
-                } catch (err) {
-                    console.warn("GitHub leaderboard fetch error:", err);
-                }
-
-                if (this.list.length > 0 && !this.selectedLevel) {
-                    this.selectedLevel = this.list[0];
-                }
-
-                this.hasUnsavedChanges = false;
-            } catch (e) {
-                console.error("Data load error:", e);
-            } finally {
-                // ГАРАНТИРОВАННО СБРАСЫВАЕМ ЛОУДИНГ В ЛЮБОМ СЛУЧАЕ
-                this.loading = false;
             }
+
+            // Обрабатываем список уровней
+            if (Array.isArray(loadedList)) {
+                this.list = loadedList.map((item, index) => {
+                    if (typeof item === 'string') {
+                        return { name: item, author: 'Unknown', rank: index + 1, records: [] };
+                    } else if (typeof item === 'object' && item !== null) {
+                        return { ...item, rank: index + 1, records: item.records || item.victors || [] };
+                    }
+                    return { name: "Unknown", rank: index + 1, records: [] };
+                });
+            } else {
+                this.list = [];
+            }
+
+            // 2. Пытаемся загрузить лидерборд с таймаутом
+            try {
+                const cacheBuster = `?_t=${Date.now()}`;
+                const resPlayers = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}${cacheBuster}`, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                }, 4000);
+
+                if (resPlayers.ok) {
+                    const pData = await resPlayers.json();
+                    if (pData.content) {
+                        const decodedPlayers = base64ToUtf8(pData.content);
+                        this.players = JSON.parse(decodedPlayers);
+                    }
+                }
+            } catch (err) {
+                console.warn("GitHub leaderboard fetch timeout or error:", err);
+            }
+
+            if (this.list.length > 0 && !this.selectedLevel) {
+                this.selectedLevel = this.list[0];
+            }
+
+            this.hasUnsavedChanges = false;
+            this.loading = false; // ГАРАНТИРОВАННО СНИМАЕМ ЛОУДИНГ
         },
 
         getThumbnail(level) {
@@ -537,9 +557,9 @@ export default {
             }
 
             try {
-                const getFileRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?_t=${Date.now()}`, {
+                const getFileRes = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?_t=${Date.now()}`, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-                });
+                }, 5000);
                 if (getFileRes.ok) {
                     const fileData = await getFileRes.json();
                     this.fileSha = fileData.sha;
@@ -549,7 +569,7 @@ export default {
                     name: item.name,
                     author: item.author,
                     verifier: item.verifier,
-                    ytid: extractYouTubeId(item.ytid),
+                        ytid: extractYouTubeId(item.ytid),
                     thumbnail: item.thumbnail || '',
                     percentToQualify: item.percentToQualify || 100,
                     records: item.records || item.victors || []
@@ -558,7 +578,7 @@ export default {
                 const jsonString = JSON.stringify(cleanData, null, 4);
                 const contentEncoded = utf8ToBase64(jsonString);
 
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
+                const response = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `token ${token}`,
@@ -571,7 +591,7 @@ export default {
                         sha: this.fileSha,
                         branch: GITHUB_BRANCH
                     })
-                });
+                }, 8000);
 
                 if (response.ok) {
                     const resData = await response.json();
