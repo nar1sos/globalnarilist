@@ -1,3 +1,5 @@
+// js/pages/Leaderboard.js
+
 import Spinner from "../components/Spinner.js";
 
 const GITHUB_USER = "nar1sos";
@@ -72,20 +74,13 @@ export default {
                     </div>
                 </div>
 
-                <!-- БЛОК СТАТИСТИКИ (РАНГ И ОЧКИ) -->
-                <div class="single-stat-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <!-- БЛОК СТАТИСТИКИ (ТОЛЬКО РАНГ) -->
+                <div class="single-stat-container" style="display: grid; grid-template-columns: 1fr; gap: 10px;">
                     <div class="card-stat">
                         <span class="stat-icon">🏆</span>
                         <div class="stat-info">
                             <span class="val">#{{ selectedRank }}</span>
-                            <span class="lbl">RANK</span>
-                        </div>
-                    </div>
-                    <div class="card-stat">
-                        <span class="stat-icon">⚡</span>
-                        <div class="stat-info">
-                            <span class="val">{{ getPlayerPoints(selectedPlayer) }}</span>
-                            <span class="lbl">POINTS</span>
+                            <span class="lbl">RANK (РУЧНАЯ СОРТИРОВКА)</span>
                         </div>
                     </div>
                 </div>
@@ -99,7 +94,7 @@ export default {
                     </div>
                 </div>
 
-                <!-- MAIN LEVELS (БЕЗ НАДПИСИ +PT) -->
+                <!-- MAIN LEVELS -->
                 <div class="section-box" v-if="mainLevelsList.length || isAdmin">
                     <div class="box-header">
                         <div class="box-title red-title">
@@ -129,7 +124,7 @@ export default {
                     </div>
                 </div>
 
-                <!-- PROGRESSES (БЕЗ НАДПИСИ +PT) -->
+                <!-- PROGRESSES -->
                 <div class="section-box" v-if="progressesList.length">
                     <div class="box-header">
                         <div class="box-title blue-title">
@@ -153,7 +148,7 @@ export default {
                     </div>
                 </div>
 
-                <!-- VERIFIED (БЕЗ НАДПИСИ +PT) -->
+                <!-- VERIFIED -->
                 <div class="section-box verified-box" v-if="verifiedLevelsList.length || isAdmin">
                     <div class="box-header">
                         <div class="box-title green-title">
@@ -184,7 +179,7 @@ export default {
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: ТОП ИГРОКОВ -->
+            <!-- ПРАВАЯ КОЛОНКА: СПИСОК ИГРОКОВ (ПЕРЕТАСКИВАНИЕ ДРАГ-Н-ДРОПОМ) -->
             <div class="sidebar-list">
                 <div 
                     v-for="(player, index) in sortedPlayers" 
@@ -196,7 +191,9 @@ export default {
                     @dragstart="onPlayerDragStart($event, index)"
                     @dragover.prevent
                     @drop="onPlayerDrop($event, index)"
+                    style="cursor: grab;"
                 >
+                    <span v-if="isAdmin && !searchQuery" style="color: #f59e0b; margin-right: 6px; font-weight: bold;">☰</span>
                     <span class="rank-num">#{{ index + 1 }}</span>
                     
                     <div class="user-block" style="flex: 1;">
@@ -213,10 +210,6 @@ export default {
                         />
                         <span class="username">{{ player.user || player.name }}</span>
                     </div>
-
-                    <span style="font-size: 12px; font-weight: 700; color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 2px 8px; border-radius: 12px; margin-left: auto;">
-                        {{ getPlayerPoints(player) }} pt
-                    </span>
                 </div>
             </div>
 
@@ -381,7 +374,7 @@ export default {
                 const q = this.searchQuery.toLowerCase();
                 list = list.filter(p => (p.user || p.name || '').toLowerCase().includes(q));
             }
-            return list.sort((a, b) => this.getPlayerPoints(b) - this.getPlayerPoints(a));
+            return list; // Возвращаем список без автоматической сортировки по очкам
         },
         filteredDemonList() {
             if (!this.levelSearch) return this.demonList;
@@ -432,58 +425,6 @@ export default {
     methods: {
         updateAdminState() {
             this.isAdmin = sessionStorage.getItem('is_admin') === 'true';
-        },
-
-        // --- НОВАЯ ФОРМУЛА РАСЧЕТА (ОТ 1000 ДО 0.67 ПОИНТОВ) ---
-        getLevelPoints(levelName) {
-            if (!this.demonList.length || !levelName) return 0;
-            const rankIndex = this.demonList.findIndex(name => name.toLowerCase() === String(levelName).toLowerCase());
-            if (rankIndex === -1) return 0;
-
-            const N = this.demonList.length;
-            if (N === 1) return 1000;
-
-            const maxPts = 1000;
-            const minPts = 0.67;
-
-            // Линейная интерполяция от maxPts (#1) до minPts (последнее место)
-            const pts = maxPts - (rankIndex / (N - 1)) * (maxPts - minPts);
-            return parseFloat(pts.toFixed(2));
-        },
-
-        getProgressPoints(recordObj) {
-            if (typeof recordObj === 'string') return this.getLevelPoints(recordObj);
-            const levelName = recordObj.levelName || recordObj.level;
-            const fullPoints = this.getLevelPoints(levelName);
-            const percent = recordObj.percent || 100;
-
-            if (percent >= 100) return fullPoints;
-            return parseFloat(((fullPoints * (percent / 100)) * 0.5).toFixed(2));
-        },
-
-        getPlayerPoints(player) {
-            if (!player) return 0;
-            let total = 0;
-
-            if (Array.isArray(player.records)) {
-                player.records.forEach(r => {
-                    if (typeof r === 'string') {
-                        total += this.getLevelPoints(r);
-                    } else if (typeof r === 'object') {
-                        total += this.getProgressPoints(r);
-                    }
-                });
-            }
-
-            const verifies = player.verified || player.verifies || [];
-            if (Array.isArray(verifies)) {
-                verifies.forEach(v => {
-                    const name = typeof v === 'string' ? v : (v.levelName || v.level);
-                    total += this.getLevelPoints(name);
-                });
-            }
-
-            return parseFloat(total.toFixed(2));
         },
 
         async loadLeaderboardData() {
@@ -668,6 +609,7 @@ export default {
             }
         },
 
+        // --- РУЧНОЕ ПЕРЕТАСКИВАНИЕ ИГРОКОВ В СПИСКЕ (DRAG & DROP) ---
         onPlayerDragStart(event, filteredIndex) {
             if (!this.isAdmin || this.searchQuery) return;
             this.draggedPlayerIndex = filteredIndex;
@@ -789,7 +731,7 @@ export default {
                         'Accept': 'application/vnd.github.v3+json'
                     },
                     body: JSON.stringify({
-                        message: 'Update Leaderboard via Admin Panel',
+                        message: 'Update Leaderboard manually via Admin Panel',
                         content: contentEncoded,
                         sha: this.fileSha,
                         branch: GITHUB_BRANCH
