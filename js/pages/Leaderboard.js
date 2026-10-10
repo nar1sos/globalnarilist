@@ -1,7 +1,8 @@
 import Spinner from "../components/Spinner.js";
 
 const GITHUB_USER = "nar1sos";
-const GITHUB_REPO = "sdrklist";
+const GITHUB_REPO = "narigdpsdemonlist
+";
 const GITHUB_BRANCH = "main";
 const GITHUB_LEADERBOARD_PATH = "data/_leaderboard.json";
 
