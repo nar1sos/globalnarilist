@@ -2,7 +2,8 @@ import * as ContentModule from "../content.js";
 import Spinner from "../components/Spinner.js";
 
 const GITHUB_USER = "nar1sos";
-const GITHUB_REPO = "sdrklist";
+const GITHUB_REPO = "narigdpsdemonlist
+";
 const GITHUB_BRANCH = "main";
 const GITHUB_FILE_PATH = "data/_list.json";
 const GITHUB_PLAYERS_PATH = "data/_leaderboard.json"; // Твой файл лидерборда
