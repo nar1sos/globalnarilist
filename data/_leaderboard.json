@@ -29,18 +29,18 @@
         "avatar": "https://i.pinimg.com/736x/81/fa/b8/81fab864dfe2e4f3bea238ed19340a41.jpg"
     },
     {
-        "user": "ANGEL",
-        "name": "ANGEL",
-        "country": "ru",
-        "avatar": "https://cs20.pikabu.ru/s/2025/11/24/19/jvy2wjpq.jpg",
-        "records": [],
-        "verified": []
-    },
-    {
         "user": "L1steN",
         "name": "L1steN",
         "country": "ru",
         "avatar": "https://static.wikia.nocookie.net/geometry-dash/images/0/0d/Terakot.jpg/revision/latest/thumbnail/width/360/height/450?cb=20250822140448&path-prefix=ru",
+        "records": [],
+        "verified": []
+    },
+    {
+        "user": "ANGEL",
+        "name": "ANGEL",
+        "country": "ru",
+        "avatar": "https://cs20.pikabu.ru/s/2025/11/24/19/jvy2wjpq.jpg",
         "records": [],
         "verified": []
     },
