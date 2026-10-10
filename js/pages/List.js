@@ -1,3 +1,5 @@
+// js/pages/List.js
+
 import * as ContentModule from "../content.js";
 import Spinner from "../components/Spinner.js";
 
@@ -5,7 +7,7 @@ const GITHUB_USER = "nar1sos";
 const GITHUB_REPO = "narigdpsdemonlist";
 const GITHUB_BRANCH = "main";
 const GITHUB_FILE_PATH = "data/_list.json";
-const GITHUB_PLAYERS_PATH = "data/_leaderboard.json"; // Твой файл лидерборда
+const GITHUB_PLAYERS_PATH = "data/_leaderboard.json";
 
 function utf8ToBase64(str) {
     const bytes = new TextEncoder().encode(str);
@@ -182,7 +184,7 @@ export default {
 
                             <hr style="border: 0; border-top: 1px solid #283044; margin: 18px 0;" />
 
-                            <!-- СЕКЦИЯ ВИКТОРОВ (АВТОМАТИЧЕСКИ ИЗ _leaderboard.json) -->
+                            <!-- СЕКЦИЯ ВИКТОРОВ -->
                             <div class="victors-section">
                                 <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
                                     <span>🏆 Викторы</span>
@@ -198,7 +200,6 @@ export default {
                                         style="display: flex; align-items: center; justify-content: space-between; background: #111827; padding: 8px 12px; border-radius: 8px; border: 1px solid #1f2937;"
                                     >
                                         <div style="display: flex; align-items: center; gap: 10px;">
-                                            <!-- Картинка флага из country -->
                                             <img 
                                                 v-if="isUrl(victor.country)" 
                                                 :src="victor.country" 
@@ -263,7 +264,7 @@ export default {
     data: () => ({
         GITHUB_USER,
         list: [],
-        players: [], // Массив игроков из _leaderboard.json
+        players: [],
         loading: true,
         selectedLevel: null,
         searchQuery: '',
@@ -287,11 +288,9 @@ export default {
             );
         },
 
-        // ДИНАМИЧЕСКИЙ ПОИСК ВИКТОРОВ ИЗ _leaderboard.json
         levelVictors() {
             if (!this.selectedLevel) return [];
             
-            // 1. Проверяем локальные records в самом объекте уровня в _list.json
             const directRecords = this.selectedLevel.records || this.selectedLevel.victors || [];
             if (directRecords.length > 0) {
                 return directRecords.map(r => ({
@@ -301,19 +300,17 @@ export default {
                 }));
             }
 
-            // 2. Поиск среди игроков из _leaderboard.json
             const matchedVictors = [];
             const currentLevelName = this.selectedLevel.name.toLowerCase().trim();
 
             this.players.forEach(player => {
                 const playerRecords = player.records || [];
                 
-                // Массив records состоит из строк c названиями уровней
                 const hasBeatenLevel = playerRecords.some(rec => {
                     if (typeof rec === 'string') {
                         return rec.toLowerCase().trim() === currentLevelName;
                     } else if (typeof rec === 'object' && rec !== null) {
-                        const lvlName = rec.name || rec.level || '';
+                        const lvlName = rec.name || rec.level || rec.levelName || '';
                         return lvlName.toLowerCase().trim() === currentLevelName;
                     }
                     return false;
@@ -369,19 +366,25 @@ export default {
         },
 
         async loadAllData() {
+            this.loading = true;
             try {
-                // 1. Загрузка списка уровней (_list.json)
+                // 1. Загрузка списка уровней (_list.json) с cache-buster
                 let loadedList = [];
                 try {
-                    let resList = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?ref=${GITHUB_BRANCH}`);
+                    const cacheBuster = `?_t=${Date.now()}`;
+                    let resList = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}${cacheBuster}`, {
+                        headers: { 'Accept': 'application/vnd.github.v3+json' }
+                    });
                     if (resList.ok) {
                         const data = await resList.json();
                         this.fileSha = data.sha;
-                        const decodedContent = base64ToUtf8(data.content);
-                        loadedList = JSON.parse(decodedContent);
+                        if (data.content) {
+                            const decodedContent = base64ToUtf8(data.content);
+                            loadedList = JSON.parse(decodedContent);
+                        }
                     }
                 } catch (err) {
-                    console.warn("GitHub list fetch error:", err);
+                    console.warn("GitHub list fetch error, falling back:", err);
                 }
 
                 if (!loadedList || loadedList.length === 0) {
@@ -404,11 +407,16 @@ export default {
 
                 // 2. Загрузка лидерборда (_leaderboard.json)
                 try {
-                    let resPlayers = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}?ref=${GITHUB_BRANCH}`);
+                    const cacheBuster = `?_t=${Date.now()}`;
+                    let resPlayers = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}${cacheBuster}`, {
+                        headers: { 'Accept': 'application/vnd.github.v3+json' }
+                    });
                     if (resPlayers.ok) {
                         const pData = await resPlayers.json();
-                        const decodedPlayers = base64ToUtf8(pData.content);
-                        this.players = JSON.parse(decodedPlayers);
+                        if (pData.content) {
+                            const decodedPlayers = base64ToUtf8(pData.content);
+                            this.players = JSON.parse(decodedPlayers);
+                        }
                     }
                 } catch (err) {
                     console.warn("GitHub leaderboard fetch error:", err);
@@ -422,6 +430,7 @@ export default {
             } catch (e) {
                 console.error("Data load error:", e);
             } finally {
+                // ГАРАНТИРОВАННО СБРАСЫВАЕМ ЛОУДИНГ В ЛЮБОМ СЛУЧАЕ
                 this.loading = false;
             }
         },
@@ -528,7 +537,7 @@ export default {
             }
 
             try {
-                const getFileRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?ref=${GITHUB_BRANCH}`, {
+                const getFileRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?_t=${Date.now()}`, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
                 });
                 if (getFileRes.ok) {
