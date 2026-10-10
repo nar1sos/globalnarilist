@@ -1,5 +1,13 @@
 [
     {
+        "user": "ThisIsTriscis",
+        "name": "ThisIsTriscis",
+        "country": "ru",
+        "avatar": "https://i.pinimg.com/236x/37/fa/dd/37fadd17074af017857f23c82bfe3ddc.jpg",
+        "records": [],
+        "verified": []
+    },
+    {
         "name": "NaR1",
         "country": "ua",
         "avatar": "https://i.pinimg.com/736x/81/fa/b8/81fab864dfe2e4f3bea238ed19340a41.jpg"
@@ -41,14 +49,6 @@
         "name": "L1steN",
         "country": "ru",
         "avatar": "https://static.wikia.nocookie.net/geometry-dash/images/0/0d/Terakot.jpg/revision/latest/thumbnail/width/360/height/450?cb=20250822140448&path-prefix=ru",
-        "records": [],
-        "verified": []
-    },
-    {
-        "user": "ThisIsTriscis",
-        "name": "ThisIsTriscis",
-        "country": "ru",
-        "avatar": "https://i.pinimg.com/236x/37/fa/dd/37fadd17074af017857f23c82bfe3ddc.jpg",
         "records": [],
         "verified": []
     },
