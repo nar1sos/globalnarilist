@@ -38,7 +38,6 @@ function extractYouTubeId(urlOrId) {
     return str;
 }
 
-// Помощник с таймаутом, чтобы fetch не висел вечно
 async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
@@ -306,40 +305,44 @@ export default {
         },
 
         levelVictors() {
-            if (!this.selectedLevel) return [];
+            if (!this.selectedLevel || !this.selectedLevel.name) return [];
             
             const directRecords = this.selectedLevel.records || this.selectedLevel.victors || [];
             if (directRecords.length > 0) {
                 return directRecords.map(r => ({
-                    name: r.user || r.name || r.player || 'Unknown',
-                    country: r.country || '',
-                    percent: r.percent || 100
+                    name: r ? (r.user || r.name || r.player || 'Unknown') : 'Unknown',
+                    country: r ? (r.country || '') : '',
+                    percent: r ? (r.percent || 100) : 100
                 }));
             }
 
             const matchedVictors = [];
-            const currentLevelName = this.selectedLevel.name.toLowerCase().trim();
+            const currentLevelName = String(this.selectedLevel.name).toLowerCase().trim();
 
-            this.players.forEach(player => {
-                const playerRecords = player.records || [];
-                
-                const hasBeatenLevel = playerRecords.some(rec => {
-                    if (typeof rec === 'string') {
-                        return rec.toLowerCase().trim() === currentLevelName;
-                    } else if (typeof rec === 'object' && rec !== null) {
-                        const lvlName = rec.name || rec.level || rec.levelName || '';
-                        return lvlName.toLowerCase().trim() === currentLevelName;
-                    }
-                    return false;
-                });
-
-                if (hasBeatenLevel) {
-                    matchedVictors.push({
-                        name: player.user || player.name || 'Unknown',
-                        country: player.country || ''
+            if (Array.isArray(this.players)) {
+                this.players.forEach(player => {
+                    if (!player) return;
+                    const playerRecords = player.records || [];
+                    
+                    const hasBeatenLevel = playerRecords.some(rec => {
+                        if (!rec) return false;
+                        if (typeof rec === 'string') {
+                            return rec.toLowerCase().trim() === currentLevelName;
+                        } else if (typeof rec === 'object') {
+                            const lvlName = rec.name || rec.level || rec.levelName || '';
+                            return String(lvlName).toLowerCase().trim() === currentLevelName;
+                        }
+                        return false;
                     });
-                }
-            });
+
+                    if (hasBeatenLevel) {
+                        matchedVictors.push({
+                            name: player.user || player.name || 'Unknown',
+                            country: player.country || ''
+                        });
+                    }
+                });
+            }
 
             return matchedVictors;
         }
@@ -387,7 +390,6 @@ export default {
             let loadedList = [];
 
             try {
-                // 1. Пытаемся загрузить _list.json с GitHub с таймаутом в 4 секунды
                 const cacheBuster = `?_t=${Date.now()}`;
                 const resList = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}${cacheBuster}`, {
                     headers: { 'Accept': 'application/vnd.github.v3+json' }
@@ -405,7 +407,6 @@ export default {
                 console.warn("GitHub list fetch timeout or error, using fallback:", err);
             }
 
-            // Если с GitHub не вышло, пробуем взять из ContentModule
             if (!loadedList || loadedList.length === 0) {
                 try {
                     const fetchListFn = ContentModule.fetchList || (async () => []);
@@ -415,7 +416,6 @@ export default {
                 }
             }
 
-            // Обрабатываем список уровней
             if (Array.isArray(loadedList)) {
                 this.list = loadedList.map((item, index) => {
                     if (typeof item === 'string') {
@@ -429,7 +429,6 @@ export default {
                 this.list = [];
             }
 
-            // 2. Пытаемся загрузить лидерборд с таймаутом
             try {
                 const cacheBuster = `?_t=${Date.now()}`;
                 const resPlayers = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}${cacheBuster}`, {
@@ -452,7 +451,7 @@ export default {
             }
 
             this.hasUnsavedChanges = false;
-            this.loading = false; // ГАРАНТИРОВАННО СНИМАЕМ ЛОУДИНГ
+            this.loading = false;
         },
 
         getThumbnail(level) {
@@ -569,7 +568,7 @@ export default {
                     name: item.name,
                     author: item.author,
                     verifier: item.verifier,
-                        ytid: extractYouTubeId(item.ytid),
+                    ytid: extractYouTubeId(item.ytid),
                     thumbnail: item.thumbnail || '',
                     percentToQualify: item.percentToQualify || 100,
                     records: item.records || item.victors || []
