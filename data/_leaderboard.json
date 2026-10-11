@@ -191,7 +191,15 @@
         "name": "SerVax",
         "country": "am",
         "avatar": "https://static.wikia.nocookie.net/geometry-dash/images/7/79/SerVax_profile.jpg/revision/latest?cb=20250729114842&path-prefix=ru",
-        "records": [],
+        "records": [
+            "Tidal Wave",
+            "Penumbral",
+            "Silent Clubstep",
+            "andromeda",
+            "Anathema",
+            "Avernus",
+            "Defeated Circles"
+        ],
         "verified": []
     }
 ]
