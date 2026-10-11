@@ -258,7 +258,35 @@
         "name": "dovvin",
         "country": "pl",
         "avatar": "https://geometrydash.wiki.gg/images/Dovvin.jpg?68b36a",
-        "records": [],
+        "records": [
+            "ORBIT",
+            "Quanteuse processing",
+            "Every End",
+            "Penumbral",
+            "Silent Clubstep",
+            "andromeda",
+            {
+                "levelName": "Avernus",
+                "percent": 56
+            }
+        ],
+        "verified": []
+    },
+    {
+        "user": "Bacon",
+        "name": "Bacon",
+        "country": "kz",
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwxcHpzRCrSJI_TUFJLRemzNCyXuT9qF9rtCIVjwLOgg&s",
+        "records": [
+            "Tidal Wave",
+            "BOOBAWAMBA",
+            "Quanteuse processing",
+            "Unnerfed Sakupen Circles",
+            "Lesopowal",
+            "Penumbral",
+            "Aquamarine",
+            "Avernus"
+        ],
         "verified": []
     }
 ]
