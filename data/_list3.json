@@ -1,4 +1,74 @@
 [
     {
+        "name": "Thinking Space II",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3226.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Purgatory",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/XCHbxxWhgSI/maxresdefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "BOOBAWAMBA",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2713.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Acheron",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2656.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Society",
+        "author": "",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Bloop",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3404.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Amethyst",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Abyss Of Darkness",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
+        "percentToQualify": 100,
+        "records": []
     }
 ]
