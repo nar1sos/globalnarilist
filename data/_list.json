@@ -153,15 +153,6 @@
         "records": []
     },
     {
-        "name": "Herr Machine",
-        "author": "Unknown",
-        "verifier": "BONN GD",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3437.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Every End",
         "author": "Unknown",
         "verifier": "Hqmy",
@@ -189,6 +180,15 @@
         "records": []
     },
     {
+        "name": "Herr Machine",
+        "author": "Unknown",
+        "verifier": "BONN GD",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3437.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Subsuming Vortex",
         "author": "Unknown",
         "verifier": "Cursed",
@@ -207,20 +207,20 @@
         "records": []
     },
     {
-        "name": "Ultra Paracosm",
-        "author": "Unknown",
-        "verifier": "wity26",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3412.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Silent Clubstep",
         "author": "Unknown",
         "verifier": "paqoe",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/2653.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Ultra Paracosm",
+        "author": "Unknown",
+        "verifier": "wity26",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3412.webp",
         "percentToQualify": 100,
         "records": []
     },
