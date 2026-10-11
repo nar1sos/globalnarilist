@@ -1,5 +1,35 @@
 [
     {
+        "user": "Zoink",
+        "name": "Zoink",
+        "country": "us",
+        "avatar": "https://geometrydash.wiki.gg/images/thumb/Zoink_Furry.png/300px-Zoink_Furry.png?78deb8",
+        "records": [
+            "Artemis 13",
+            "Society",
+            "Thinking Space II",
+            "Amethyst",
+            "Flamewall",
+            "Tidal Wave",
+            "ORBIT",
+            "BOOBAWAMBA",
+            "Nullscapes",
+            "Quanteuse processing",
+            "The bloop",
+            "Every End",
+            "Ashley Wave Trials",
+            "Penumbral",
+            "Subsuming Vortex",
+            "Silent Clubstep",
+            "Ultra Paracosm",
+            "andromeda",
+            "Anathema",
+            "Avernus",
+            "Defeated Circles"
+        ],
+        "verified": []
+    },
+    {
         "user": "sayonara",
         "name": "sayonara",
         "country": "kg",
@@ -56,14 +86,6 @@
                 "percent": 72
             }
         ],
-        "verified": []
-    },
-    {
-        "user": "Zoink",
-        "name": "Zoink",
-        "country": "us",
-        "avatar": "https://geometrydash.wiki.gg/images/thumb/Zoink_Furry.png/300px-Zoink_Furry.png?78deb8",
-        "records": [],
         "verified": []
     }
 ]
