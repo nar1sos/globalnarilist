@@ -129,7 +129,15 @@
         "name": "Netermind",
         "country": "us",
         "avatar": "https://static.wikia.nocookie.net/geometry-dash-fan/images/a/a5/Netermind.jpg/revision/latest?cb=20260501194456",
-        "records": [],
+        "records": [
+            "Tidal Wave",
+            "Penumbral",
+            "Silent Clubstep",
+            "andromeda",
+            "Anathema",
+            "Avernus",
+            "Defeated Circles"
+        ],
         "verified": []
     }
 ]
