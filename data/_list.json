@@ -243,6 +243,15 @@
         "records": []
     },
     {
+        "name": "KILLSTEALER",
+        "author": "Unknown",
+        "verifier": "kloone",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3389.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Aquamarine",
         "author": "Unknown",
         "verifier": "seels",
