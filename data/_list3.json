@@ -18,11 +18,11 @@
         "records": []
     },
     {
-        "name": "BOOBAWAMBA",
-        "author": "Unknown",
+        "name": "Society",
+        "author": "",
         "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2713.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -36,11 +36,20 @@
         "records": []
     },
     {
-        "name": "Society",
-        "author": "",
+        "name": "Amethyst",
+        "author": "Unknown",
         "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "BOOBAWAMBA",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2713.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -50,15 +59,6 @@
         "verifier": "",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3404.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Amethyst",
-        "author": "Unknown",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
         "percentToQualify": 100,
         "records": []
     },
