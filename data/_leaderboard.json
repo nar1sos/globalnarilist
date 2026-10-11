@@ -325,7 +325,11 @@
         "name": "Doggie",
         "country": "us",
         "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56bOY_c4t9TOtAT6PJ4dQmhFJmG9ILLEdr6eARz9weA&s=10",
-        "records": [],
+        "records": [
+            "GRIEF",
+            "Silent Clubstep",
+            "Avernus"
+        ],
         "verified": []
     }
 ]
