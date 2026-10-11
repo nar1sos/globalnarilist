@@ -166,9 +166,17 @@
         "avatar": "https://static.wikia.nocookie.net/geometry-dash-fan/images/c/c3/ZLevii.jpg/revision/latest?cb=20260502132032",
         "records": [
             "Flamewall",
-            "KILLSTEALER",
-            "Anathema"
+            "Anathema",
+            "KILLSTEALER"
         ],
+        "verified": []
+    },
+    {
+        "user": "Vorten",
+        "name": "Vorten",
+        "country": "ru",
+        "avatar": "https://geometrydash.wiki.gg/images/Vorten.jpg?983402",
+        "records": [],
         "verified": []
     }
 ]
