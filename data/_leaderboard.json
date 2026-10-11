@@ -176,6 +176,21 @@
         "name": "Vorten",
         "country": "ru",
         "avatar": "https://geometrydash.wiki.gg/images/Vorten.jpg?983402",
+        "records": [
+            "BOOBAWAMBA",
+            "Nullscapes",
+            "Penumbral",
+            "Anathema",
+            "Avernus",
+            "Defeated Circles"
+        ],
+        "verified": []
+    },
+    {
+        "user": "SerVax",
+        "name": "SerVax",
+        "country": "am",
+        "avatar": "https://static.wikia.nocookie.net/geometry-dash/images/7/79/SerVax_profile.jpg/revision/latest?cb=20250729114842&path-prefix=ru",
         "records": [],
         "verified": []
     }
