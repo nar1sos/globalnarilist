@@ -243,6 +243,15 @@
         "records": []
     },
     {
+        "name": "KILLSTEALER",
+        "author": "Unknown",
+        "verifier": "kloneee",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3389.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Avernus",
         "author": "Unknown",
         "verifier": "Zoink",
