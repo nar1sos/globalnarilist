@@ -72,20 +72,20 @@
         "records": []
     },
     {
-        "name": "VSC",
-        "author": "Unknown",
-        "verifier": "Bo",
-        "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/ewlMbTR-c_w/maxresdefault.jpg",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Aquamarine",
         "author": "Unknown",
         "verifier": "seels",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3109.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "VSC",
+        "author": "Unknown",
+        "verifier": "Bo",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/ewlMbTR-c_w/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
