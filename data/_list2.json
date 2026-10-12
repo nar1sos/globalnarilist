@@ -45,15 +45,6 @@
         "records": []
     },
     {
-        "name": "Anathema",
-        "author": "Unknown",
-        "verifier": "Whizkid",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2809.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Looping The Rooms",
         "author": "Unknown",
         "verifier": "NaR1",
@@ -63,11 +54,11 @@
         "records": []
     },
     {
-        "name": "Aquamarine",
+        "name": "Anathema",
         "author": "Unknown",
-        "verifier": "seels",
+        "verifier": "Whizkid",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3109.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2809.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -77,6 +68,24 @@
         "verifier": "Zoink",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/2659.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "VSC",
+        "author": "Unknown",
+        "verifier": "Bo",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/ewlMbTR-c_w/maxresdefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Aquamarine",
+        "author": "Unknown",
+        "verifier": "seels",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3109.webp",
         "percentToQualify": 100,
         "records": []
     },
