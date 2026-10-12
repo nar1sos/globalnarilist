@@ -18,20 +18,11 @@
         "records": []
     },
     {
-        "name": "Society",
-        "author": "",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Acheron",
+        "name": "BOOBAWAMBA",
         "author": "Unknown",
         "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2656.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2713.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -45,11 +36,29 @@
         "records": []
     },
     {
-        "name": "BOOBAWAMBA",
+        "name": "Acheron",
         "author": "Unknown",
         "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2713.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2656.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Society",
+        "author": "",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Abyss Of Darkness",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -63,11 +72,11 @@
         "records": []
     },
     {
-        "name": "Abyss Of Darkness",
+        "name": "Defeated Circles",
         "author": "Unknown",
-        "verifier": "",
+        "verifier": "Zoink",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3096.webp",
         "percentToQualify": 100,
         "records": []
     }
