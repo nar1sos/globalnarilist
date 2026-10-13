@@ -270,11 +270,272 @@
         "records": []
     },
     {
+        "name": "Spectre",
+        "author": "Unknown",
+        "verifier": "PersonHuman42",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2687.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Menace",
+        "author": "Unknown",
+        "verifier": "Whizkid05",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2683.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "FOREST OF SPIKES",
+        "author": "Unknown",
+        "verifier": "Brian",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/PR30bGp4ICg/maxresdefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Acheron",
+        "author": "Unknown",
+        "verifier": "Zoink",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2656.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Defeated Circles",
         "author": "Unknown",
         "verifier": "Zoink",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3096.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Abyss of Darkness",
+        "author": "Unknown",
+        "verifier": "Cursed",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Tunnel of Despair",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2657.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Kyouki",
+        "author": "Unknown",
+        "verifier": "Demishio",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/KDa5c0CJTHs/sddefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Sacrifice",
+        "author": "Unknown",
+        "verifier": "Laniakea",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3439.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Based After Based",
+        "author": "Unknown",
+        "verifier": "DiamondSplash",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2701.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Legacy Thinking Space II",
+        "author": "Unknown",
+        "verifier": "Zeronium",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3351.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Subterminal Point",
+        "author": "Unknown",
+        "verifier": "PoCle",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2841.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Maniacal Chains",
+        "author": "Unknown",
+        "verifier": "spcreat",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3424.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Slaughterhouse",
+        "author": "Unknown",
+        "verifier": "Doggie",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1748.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "BASSLINE JUNKIE",
+        "author": "Unknown",
+        "verifier": "Karmakaze",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3443.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Being HOME",
+        "author": "Unknown",
+        "verifier": "goobs47",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3402.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Deimos",
+        "author": "Unknown",
+        "verifier": "Doggie",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1750.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "KOCMOC",
+        "author": "Unknown",
+        "verifier": "Zoink",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2655.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Centipede",
+        "author": "Unknown",
+        "verifier": "LordVadercraft",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/ZvBf-HN8ssw/maxresdefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Lightning Rod",
+        "author": "Unknown",
+        "verifier": "Lavatrex",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2066.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "ace",
+        "author": "Unknown",
+        "verifier": "aidsen",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3430.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "zorin",
+        "author": "Unknown",
+        "verifier": "9i",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3352.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Silent Locked",
+        "author": "Unknown",
+        "verifier": "TFIBB",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3279.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Voltage",
+        "author": "Unknown",
+        "verifier": "maybee",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3300.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "CHIL",
+        "author": "Unknown",
+        "verifier": "McCoco",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3281.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "PRISMILINE",
+        "author": "Unknown",
+        "verifier": "Wain",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3435.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Salt Factory",
+        "author": "Unknown",
+        "verifier": "Nickname",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2830.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Wild Roses",
+        "author": "Unknown",
+        "verifier": "Eiriley",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3432.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Firework",
+        "author": "Unknown",
+        "verifier": "Trick",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2485.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Sakupen Circles",
+        "author": "Unknown",
+        "verifier": "Diamond",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1732.webp",
         "percentToQualify": 100,
         "records": []
     }
