@@ -1,5 +1,3 @@
-// js/pages/List.js
-
 import * as ContentModule from "../content.js";
 import Spinner from "../components/Spinner.js";
 
@@ -7,7 +5,7 @@ const GITHUB_USER = "nar1sos";
 const GITHUB_REPO = "globalnarilist";
 const GITHUB_BRANCH = "main";
 const GITHUB_FILE_PATH = "data/_list.json";
-const GITHUB_PLAYERS_PATH = "data/_leaderboard.json";
+const GITHUB_PLAYERS_PATH = "data/_leaderboard.json"; // Твой файл лидерборда
 
 function utf8ToBase64(str) {
     const bytes = new TextEncoder().encode(str);
@@ -36,22 +34,6 @@ function extractYouTubeId(urlOrId) {
         return str;
     }
     return str;
-}
-
-async function fetchWithTimeout(resource, options = {}, timeout = 5000) {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-    try {
-        const response = await fetch(resource, {
-            ...options,
-            signal: controller.signal
-        });
-        clearTimeout(id);
-        return response;
-    } catch (error) {
-        clearTimeout(id);
-        throw error;
-    }
 }
 
 export default {
@@ -101,14 +83,14 @@ export default {
                             <h3>Редакторы списка</h3>
                             <ul class="editors-list">
                                 <li><span>👑</span> NaR1</li>
-                                <li><span>🛡️</span> ThisIsTriscis</li>
-                                <li><span>🛡️</span> itslafy</li>
+                                <li><span>🛡️</span> L1steN</li>
+                                <li><span>🛡️</span> Global Demon list</li>
                             </ul>
                             
                             <div class="rules-section">
                                 <h3>Правила</h3>
                                 <ul class="rules-list">
-                                    <li><strong>1.</strong> Принимаются только рекорды из любого листа (Global list, AREDL, Pointercrate) (ВОЗМОЖНЫ ИСКЛЮЧЕНИЯ!)</li>
+                                    <li><strong>1.</strong> Не будьте ебланами плииз</li>
                                 </ul>
                             </div>
                         </div>
@@ -200,7 +182,7 @@ export default {
 
                             <hr style="border: 0; border-top: 1px solid #283044; margin: 18px 0;" />
 
-                            <!-- СЕКЦИЯ ВИКТОРОВ -->
+                            <!-- СЕКЦИЯ ВИКТОРОВ (АВТОМАТИЧЕСКИ ИЗ _leaderboard.json) -->
                             <div class="victors-section">
                                 <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
                                     <span>🏆 Викторы</span>
@@ -216,6 +198,7 @@ export default {
                                         style="display: flex; align-items: center; justify-content: space-between; background: #111827; padding: 8px 12px; border-radius: 8px; border: 1px solid #1f2937;"
                                     >
                                         <div style="display: flex; align-items: center; gap: 10px;">
+                                            <!-- Картинка флага из country -->
                                             <img 
                                                 v-if="isUrl(victor.country)" 
                                                 :src="victor.country" 
@@ -280,7 +263,7 @@ export default {
     data: () => ({
         GITHUB_USER,
         list: [],
-        players: [],
+        players: [], // Массив игроков из _leaderboard.json
         loading: true,
         selectedLevel: null,
         searchQuery: '',
@@ -304,45 +287,45 @@ export default {
             );
         },
 
+        // ДИНАМИЧЕСКИЙ ПОИСК ВИКТОРОВ ИЗ _leaderboard.json
         levelVictors() {
-            if (!this.selectedLevel || !this.selectedLevel.name) return [];
+            if (!this.selectedLevel) return [];
             
+            // 1. Проверяем локальные records в самом объекте уровня в _list.json
             const directRecords = this.selectedLevel.records || this.selectedLevel.victors || [];
             if (directRecords.length > 0) {
                 return directRecords.map(r => ({
-                    name: r ? (r.user || r.name || r.player || 'Unknown') : 'Unknown',
-                    country: r ? (r.country || '') : '',
-                    percent: r ? (r.percent || 100) : 100
+                    name: r.user || r.name || r.player || 'Unknown',
+                    country: r.country || '',
+                    percent: r.percent || 100
                 }));
             }
 
+            // 2. Поиск среди игроков из _leaderboard.json
             const matchedVictors = [];
-            const currentLevelName = String(this.selectedLevel.name).toLowerCase().trim();
+            const currentLevelName = this.selectedLevel.name.toLowerCase().trim();
 
-            if (Array.isArray(this.players)) {
-                this.players.forEach(player => {
-                    if (!player) return;
-                    const playerRecords = player.records || [];
-                    
-                    const hasBeatenLevel = playerRecords.some(rec => {
-                        if (!rec) return false;
-                        if (typeof rec === 'string') {
-                            return rec.toLowerCase().trim() === currentLevelName;
-                        } else if (typeof rec === 'object') {
-                            const lvlName = rec.name || rec.level || rec.levelName || '';
-                            return String(lvlName).toLowerCase().trim() === currentLevelName;
-                        }
-                        return false;
-                    });
-
-                    if (hasBeatenLevel) {
-                        matchedVictors.push({
-                            name: player.user || player.name || 'Unknown',
-                            country: player.country || ''
-                        });
+            this.players.forEach(player => {
+                const playerRecords = player.records || [];
+                
+                // Массив records состоит из строк c названиями уровней
+                const hasBeatenLevel = playerRecords.some(rec => {
+                    if (typeof rec === 'string') {
+                        return rec.toLowerCase().trim() === currentLevelName;
+                    } else if (typeof rec === 'object' && rec !== null) {
+                        const lvlName = rec.name || rec.level || '';
+                        return lvlName.toLowerCase().trim() === currentLevelName;
                     }
+                    return false;
                 });
-            }
+
+                if (hasBeatenLevel) {
+                    matchedVictors.push({
+                        name: player.user || player.name || 'Unknown',
+                        country: player.country || ''
+                    });
+                }
+            });
 
             return matchedVictors;
         }
@@ -386,72 +369,61 @@ export default {
         },
 
         async loadAllData() {
-            this.loading = true;
-            let loadedList = [];
-
             try {
-                const cacheBuster = `?_t=${Date.now()}`;
-                const resList = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}${cacheBuster}`, {
-                    headers: { 'Accept': 'application/vnd.github.v3+json' }
-                }, 4000);
-
-                if (resList.ok) {
-                    const data = await resList.json();
-                    this.fileSha = data.sha;
-                    if (data.content) {
+                // 1. Загрузка списка уровней (_list.json)
+                let loadedList = [];
+                try {
+                    let resList = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?ref=${GITHUB_BRANCH}`);
+                    if (resList.ok) {
+                        const data = await resList.json();
+                        this.fileSha = data.sha;
                         const decodedContent = base64ToUtf8(data.content);
                         loadedList = JSON.parse(decodedContent);
                     }
+                } catch (err) {
+                    console.warn("GitHub list fetch error:", err);
                 }
-            } catch (err) {
-                console.warn("GitHub list fetch timeout or error, using fallback:", err);
-            }
 
-            if (!loadedList || loadedList.length === 0) {
-                try {
+                if (!loadedList || loadedList.length === 0) {
                     const fetchListFn = ContentModule.fetchList || (async () => []);
                     loadedList = await fetchListFn();
-                } catch (e) {
-                    console.warn("ContentModule fetch error:", e);
                 }
-            }
 
-            if (Array.isArray(loadedList)) {
-                this.list = loadedList.map((item, index) => {
-                    if (typeof item === 'string') {
-                        return { name: item, author: 'Unknown', rank: index + 1, records: [] };
-                    } else if (typeof item === 'object' && item !== null) {
-                        return { ...item, rank: index + 1, records: item.records || item.victors || [] };
-                    }
-                    return { name: "Unknown", rank: index + 1, records: [] };
-                });
-            } else {
-                this.list = [];
-            }
+                if (Array.isArray(loadedList)) {
+                    this.list = loadedList.map((item, index) => {
+                        if (typeof item === 'string') {
+                            return { name: item, author: 'Unknown', rank: index + 1, records: [] };
+                        } else if (typeof item === 'object' && item !== null) {
+                            return { ...item, rank: index + 1, records: item.records || item.victors || [] };
+                        }
+                        return { name: "Unknown", rank: index + 1, records: [] };
+                    });
+                } else {
+                    this.list = [];
+                }
 
-            try {
-                const cacheBuster = `?_t=${Date.now()}`;
-                const resPlayers = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}${cacheBuster}`, {
-                    headers: { 'Accept': 'application/vnd.github.v3+json' }
-                }, 4000);
-
-                if (resPlayers.ok) {
-                    const pData = await resPlayers.json();
-                    if (pData.content) {
+                // 2. Загрузка лидерборда (_leaderboard.json)
+                try {
+                    let resPlayers = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_PLAYERS_PATH}?ref=${GITHUB_BRANCH}`);
+                    if (resPlayers.ok) {
+                        const pData = await resPlayers.json();
                         const decodedPlayers = base64ToUtf8(pData.content);
                         this.players = JSON.parse(decodedPlayers);
                     }
+                } catch (err) {
+                    console.warn("GitHub leaderboard fetch error:", err);
                 }
-            } catch (err) {
-                console.warn("GitHub leaderboard fetch timeout or error:", err);
-            }
 
-            if (this.list.length > 0 && !this.selectedLevel) {
-                this.selectedLevel = this.list[0];
-            }
+                if (this.list.length > 0 && !this.selectedLevel) {
+                    this.selectedLevel = this.list[0];
+                }
 
-            this.hasUnsavedChanges = false;
-            this.loading = false;
+                this.hasUnsavedChanges = false;
+            } catch (e) {
+                console.error("Data load error:", e);
+            } finally {
+                this.loading = false;
+            }
         },
 
         getThumbnail(level) {
@@ -556,9 +528,9 @@ export default {
             }
 
             try {
-                const getFileRes = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?_t=${Date.now()}`, {
+                const getFileRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}?ref=${GITHUB_BRANCH}`, {
                     headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-                }, 5000);
+                });
                 if (getFileRes.ok) {
                     const fileData = await getFileRes.json();
                     this.fileSha = fileData.sha;
@@ -577,7 +549,7 @@ export default {
                 const jsonString = JSON.stringify(cleanData, null, 4);
                 const contentEncoded = utf8ToBase64(jsonString);
 
-                const response = await fetchWithTimeout(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${GITHUB_FILE_PATH}`, {
                     method: 'PUT',
                     headers: {
                         'Authorization': `token ${token}`,
@@ -590,7 +562,7 @@ export default {
                         sha: this.fileSha,
                         branch: GITHUB_BRANCH
                     })
-                }, 8000);
+                });
 
                 if (response.ok) {
                     const resData = await response.json();
