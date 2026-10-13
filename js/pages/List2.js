@@ -7,6 +7,7 @@ const GITHUB_USER = "nar1sos";
 const GITHUB_REPO = "globalnarilist";
 const GITHUB_BRANCH = "main";
 const GITHUB_FILE_PATH = "data/_list2.json";
+const GITHUB_PLAYERS_PATH = "data/_leaderboard.json";
 
 function utf8ToBase64(str) {
     const bytes = new TextEncoder().encode(str);
