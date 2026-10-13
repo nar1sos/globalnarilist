@@ -444,7 +444,7 @@ export default {
             if (N === 1) return 1000;
 
             const maxPts = 1000;
-            const minPts = 0.67;
+            const minPts = 200;
 
             // Линейная интерполяция от maxPts (#1) до minPts (последнее место)
             const pts = maxPts - (rankIndex / (N - 1)) * (maxPts - minPts);
