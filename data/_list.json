@@ -171,6 +171,15 @@
         "records": []
     },
     {
+        "name": "Silent Clubstep",
+        "author": "Unknown",
+        "verifier": "paqoe",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2653.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Penumbral",
         "author": "Unknown",
         "verifier": "w3rty",
@@ -203,15 +212,6 @@
         "verifier": "NaR1",
         "ytid": "",
         "thumbnail": "https://preview.redd.it/looping-the-rooms-v0-39r51671d7gg1.jpeg?auto=webp&s=c13243c4d619ba478024f305289e7148456f24fd",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Silent Clubstep",
-        "author": "Unknown",
-        "verifier": "paqoe",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2653.webp",
         "percentToQualify": 100,
         "records": []
     },
