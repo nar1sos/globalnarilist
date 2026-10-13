@@ -355,7 +355,7 @@ export default {
         getPoints(rank) {
             if (!rank || rank <= 0) return 0;
             const maxPoints = 1000;
-            const minPoints = 1;
+            const minPoints = 200;
             const totalLevels = this.list.length || 1;
 
             if (totalLevels === 1) return maxPoints;
