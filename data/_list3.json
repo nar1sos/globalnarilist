@@ -1,14 +1,5 @@
 [
     {
-        "name": "Thinking Space II",
-        "author": "Unknown",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3226.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "The Purgatory",
         "author": "Unknown",
         "verifier": "",
@@ -27,11 +18,11 @@
         "records": []
     },
     {
-        "name": "Amethyst",
+        "name": "Thinking Space II",
         "author": "Unknown",
         "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3226.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -45,24 +36,6 @@
         "records": []
     },
     {
-        "name": "Society",
-        "author": "",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Abyss Of Darkness",
-        "author": "Unknown",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "The Bloop",
         "author": "Unknown",
         "verifier": "",
@@ -72,11 +45,38 @@
         "records": []
     },
     {
-        "name": "Defeated Circles",
+        "name": "Silent Clubstep",
         "author": "Unknown",
-        "verifier": "Zoink",
+        "verifier": "",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3096.webp",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2653.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Society",
+        "author": "",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Amethyst",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Abyss Of Darkness",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/1706.webp",
         "percentToQualify": 100,
         "records": []
     }
