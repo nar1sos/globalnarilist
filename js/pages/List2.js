@@ -157,36 +157,6 @@ export default {
                         </div>
                     </div>
 
-                    <!-- ПРАВАЯ КОЛОНКА (ИНФОРМАЦИЯ И АВТО-ВИКТОРЫ) -->
-                    <div class="gdl-details-container">
-                        <div v-if="selectedLevel" class="gdl-level-detail-box">
-                            
-                            <!-- Видео плейер -->
-                            <div class="detail-video" v-if="extractYouTubeId(selectedLevel.ytid)">
-                                <iframe 
-                                    :src="'https://www.youtube.com/embed/' + extractYouTubeId(selectedLevel.ytid)" 
-                                    frameborder="0" 
-                                    allowfullscreen
-                                    style="width: 100%; height: 210px; border-radius: 8px;"
-                                ></iframe>
-                            </div>
-
-                            <!-- Информация об уровне -->
-                            <div style="margin-top: 15px;">
-                                <h2 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 4px;">
-                                    #{{ selectedLevel.rank }} - {{ selectedLevel.name }}
-                                </h2>
-                                <p style="color: #94a3b8; font-size: 14px;">
-                                    Создатель: <strong style="color: #f3f4f6;">{{ selectedLevel.author }}</strong>
-                                </p>
-                                <p v-if="selectedLevel.verifier" style="color: #94a3b8; font-size: 14px; margin-top: 2px;">
-                                    Верификатор: <strong style="color: #f3f4f6;">{{ selectedLevel.verifier }}</strong>
-                                </p>
-                                <p style="color: #38bdf8; font-weight: 700; margin-top: 6px;">
-                                    Очки за прохождение: {{ getPoints(selectedLevel.rank) }} pt
-                                </p>
-                            </div>
-
                             <!-- Управление (Админ) -->
                             <div v-if="isAdmin" style="display: flex; gap: 8px; margin-top: 12px;">
                                 <button @click="openEditModal(selectedLevel)" style="flex:1; padding: 6px 12px; background: #3b82f6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 12px;">
