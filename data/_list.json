@@ -9,15 +9,6 @@
         "records": []
     },
     {
-        "name": "The Purgatory",
-        "author": "Unknown",
-        "verifier": "NaR1",
-        "ytid": "",
-        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Artemis 13",
         "author": "Unknown",
         "verifier": "Zoink",
@@ -32,6 +23,15 @@
         "verifier": "wPopoff",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3393.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Purgatory",
+        "author": "Unknown",
+        "verifier": "NaR1",
+        "ytid": "",
+        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
         "percentToQualify": 100,
         "records": []
     },
