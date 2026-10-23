@@ -49,7 +49,7 @@
         "author": "Unknown",
         "verifier": "wPopoff",
         "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2976.webp",
+        "thumbnail": "https://i.ytimg.com/vi/4lfkzz1VCbA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCIQbTx-jHO0dKbqRz-jJO_rnlkKQ",
         "percentToQualify": 100,
         "records": []
     },
@@ -81,20 +81,20 @@
         "records": []
     },
     {
-        "name": "ORBIT",
-        "author": "Unknown",
-        "verifier": "Zoink",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3304.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Antarctic Lights",
         "author": "Unknown",
         "verifier": "Axinity",
         "ytid": "",
         "thumbnail": "https://i.ytimg.com/vi/02HzrZ171g8/maxresdefault.jpg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "ORBIT",
+        "author": "Unknown",
+        "verifier": "Zoink",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3304.webp",
         "percentToQualify": 100,
         "records": []
     },
