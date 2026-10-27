@@ -1,5 +1,14 @@
 [
     {
+        "name": "GRIEF",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/gB8slBPlOjc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDITmdULB308xMva65jg4y-6h2oKg",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "The Purgatory",
         "author": "Unknown",
         "verifier": "",
