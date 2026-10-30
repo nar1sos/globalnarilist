@@ -9,20 +9,20 @@
         "records": []
     },
     {
-        "name": "The Purgatory",
-        "author": "Unknown",
-        "verifier": "",
-        "ytid": "",
-        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Tidal Wave",
         "author": "",
         "verifier": "",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/2660.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "The Purgatory",
+        "author": "Unknown",
+        "verifier": "",
+        "ytid": "",
+        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
         "percentToQualify": 100,
         "records": []
     },
