@@ -27,15 +27,6 @@
         "records": []
     },
     {
-        "name": "The Purgatory",
-        "author": "Unknown",
-        "verifier": "NaR1",
-        "ytid": "",
-        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Thinking Space II",
         "author": "Unknown",
         "verifier": "Zoink",
@@ -72,11 +63,29 @@
         "records": []
     },
     {
+        "name": "The Purgatory",
+        "author": "Unknown",
+        "verifier": "NaR1",
+        "ytid": "",
+        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
         "name": "Green Bullet",
         "author": "Unknown",
         "verifier": "Nickname",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3409.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "OG SARY NEVER CLEAR",
+        "author": "Unknown",
+        "verifier": "안로",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/nHCje7p-gY8/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
