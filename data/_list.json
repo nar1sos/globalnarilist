@@ -63,29 +63,11 @@
         "records": []
     },
     {
-        "name": "The Purgatory",
-        "author": "Unknown",
-        "verifier": "NaR1",
-        "ytid": "",
-        "thumbnail": "https://i.postimg.cc/bJRjrDgq/Infernal'nyj-titul-Cistilise.png",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Green Bullet",
         "author": "Unknown",
         "verifier": "Nickname",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3409.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "OG SARY NEVER CLEAR",
-        "author": "Unknown",
-        "verifier": "안로",
-        "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/nHCje7p-gY8/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
@@ -117,20 +99,29 @@
         "records": []
     },
     {
-        "name": "Old Orochi",
-        "author": "Unknown",
-        "verifier": "SeptaGon",
-        "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/-rQ_vxf1o3c/maxresdefault.jpg",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Nullscapes",
         "author": "Unknown",
         "verifier": "Zoink",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/2684.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Lesopowal",
+        "author": "Unknown",
+        "verifier": "Bacon",
+        "ytid": "",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3369.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Old Orochi",
+        "author": "Unknown",
+        "verifier": "SeptaGon",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/-rQ_vxf1o3c/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
@@ -149,15 +140,6 @@
         "verifier": "ad3usgmd",
         "ytid": "",
         "thumbnail": "https://i.ytimg.com/vi/_ea8mbSfZvA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAU0U4_AddzknFUdq9bvnavR4wUGA",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Lesopowal",
-        "author": "Unknown",
-        "verifier": "Bacon",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/3369.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -221,15 +203,6 @@
         "verifier": "Cursed",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3275.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
-        "name": "Looping The Rooms",
-        "author": "Unknown",
-        "verifier": "NaR1",
-        "ytid": "",
-        "thumbnail": "https://preview.redd.it/looping-the-rooms-v0-39r51671d7gg1.jpeg?auto=webp&s=c13243c4d619ba478024f305289e7148456f24fd",
         "percentToQualify": 100,
         "records": []
     },
