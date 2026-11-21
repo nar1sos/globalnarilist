@@ -13,7 +13,7 @@
         "author": "Unknown",
         "verifier": "Zoink",
         "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/0iLnQyuk4tU/hqdefault.jpg",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/3436.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -63,15 +63,6 @@
         "records": []
     },
     {
-        "name": "Tidal Wave",
-        "author": "Unknown",
-        "verifier": "Zoink",
-        "ytid": "",
-        "thumbnail": "https://thumbnails.demonlist.org/classic/2660.webp",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Green Bullet",
         "author": "Unknown",
         "verifier": "Nickname",
@@ -81,11 +72,11 @@
         "records": []
     },
     {
-        "name": "Antarctic Lights",
+        "name": "Tidal Wave",
         "author": "Unknown",
-        "verifier": "Axinity",
+        "verifier": "Zoink",
         "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/02HzrZ171g8/maxresdefault.jpg",
+        "thumbnail": "https://thumbnails.demonlist.org/classic/2660.webp",
         "percentToQualify": 100,
         "records": []
     },
@@ -95,6 +86,15 @@
         "verifier": "Zoink",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/3304.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Antarctic Lights",
+        "author": "Unknown",
+        "verifier": "Axinity",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/02HzrZ171g8/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
@@ -135,15 +135,6 @@
         "records": []
     },
     {
-        "name": "Old Orochi",
-        "author": "Unknown",
-        "verifier": "SeptaGon",
-        "ytid": "",
-        "thumbnail": "https://i.ytimg.com/vi/-rQ_vxf1o3c/maxresdefault.jpg",
-        "percentToQualify": 100,
-        "records": []
-    },
-    {
         "name": "Quanteuse processing",
         "author": "Unknown",
         "verifier": "Zoink",
@@ -176,6 +167,15 @@
         "verifier": "Hqmy",
         "ytid": "",
         "thumbnail": "https://thumbnails.demonlist.org/classic/2928.webp",
+        "percentToQualify": 100,
+        "records": []
+    },
+    {
+        "name": "Old Orochi",
+        "author": "Unknown",
+        "verifier": "SeptaGon",
+        "ytid": "",
+        "thumbnail": "https://i.ytimg.com/vi/-rQ_vxf1o3c/maxresdefault.jpg",
         "percentToQualify": 100,
         "records": []
     },
